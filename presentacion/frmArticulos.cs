@@ -50,7 +50,8 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
+                MessageBox.Show("Error al cargar articulos.");
             }
         }
 
@@ -124,7 +125,8 @@ namespace presentacion
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    //MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Error al eliminar, intente nuevamente.");
                 }
             }
         }        
@@ -198,7 +200,8 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
+                MessageBox.Show("Error al filtrar.");
             }
         }
 

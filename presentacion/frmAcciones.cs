@@ -58,7 +58,8 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
+                MessageBox.Show("Error al cargar ventana.");
             }
         }
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -156,7 +157,8 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
+                MessageBox.Show("Error al guardar/modificar. Intente nuevamente.");
             }
         }
 
