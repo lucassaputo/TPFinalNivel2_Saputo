@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Configuration;
+using System.Globalization;
 
 namespace presentacion
 {
@@ -50,6 +51,7 @@ namespace presentacion
                     txtDescripcion.Text = articulo.Descripcion;
                     txtUrlImagen.Text = articulo.ImagenUrl;
                     cargarImagen(articulo.ImagenUrl);
+                    txtPrecio.Text = articulo.Precio.ToString("#0.00", System.Globalization.CultureInfo.InvariantCulture);
                     cboMarca.SelectedValue = articulo.Marca.Id;
                     cboCategoria.SelectedValue = articulo.Categoria.Id;
                 }
@@ -64,11 +66,65 @@ namespace presentacion
             Close();
         }
 
+        private bool validarArticulo()
+        {
+            if (cboMarca.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione la marca del articulo.");
+                return true;
+            }
+            if (cboCategoria.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione la categoria del articulo.");
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtCodigo.Text))
+            {
+                MessageBox.Show("Debes cargar el Código.");
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtNombre.Text))
+            {
+                MessageBox.Show("Debes cargar el Nombre.");
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtPrecio.Text))
+            {
+                MessageBox.Show("Debes cargar el Precio.");
+                return true;
+            }
+            if (!(esDecimal(txtPrecio.Text)))
+            {
+                MessageBox.Show("Solo nros son admitidos en el precio, utilice punto para colocar decimales.");
+                return true;
+            }            
+            return false;
+        }
+        private bool esDecimal(string cadena)
+        {
+            decimal resultado;
+            if (decimal.TryParse(cadena, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out resultado))
+            {
+                return true;
+            }
+            return false;
+        }
+        private decimal pasarADecimal(string cadena)
+        {
+            decimal resultado;
+            if (decimal.TryParse(cadena, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out resultado))
+            {
+                return resultado;
+            }
+            return -1;
+        }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
+                if (validarArticulo())
+                    return;
                 if (articulo == null)
                     articulo = new Articulo();
 
@@ -76,6 +132,7 @@ namespace presentacion
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.ImagenUrl = txtUrlImagen.Text;
+                articulo.Precio = pasarADecimal(txtPrecio.Text);
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
 
@@ -117,7 +174,7 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-                pbxArticulo.Load("https://pbs.twimg.com/media/FDehbi8WUAMTzRl.jpg");
+                pbxArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
             }
         }
 

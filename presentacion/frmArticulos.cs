@@ -68,7 +68,7 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-                pbxArticulo.Load("https://pbs.twimg.com/media/FDehbi8WUAMTzRl.jpg");
+                pbxArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
             }
         }
 
@@ -82,11 +82,18 @@ namespace presentacion
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Articulo seleccionado;
-            seleccionado = (Articulo)dtgArticulos.CurrentRow.DataBoundItem;
+            if (dtgArticulos.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un articulo en el listado.");
+            }
+            else
+            {
+                seleccionado = (Articulo)dtgArticulos.CurrentRow.DataBoundItem;
 
-            frmAcciones modificar = new frmAcciones(seleccionado);
-            modificar.ShowDialog();
-            cargar();
+                frmAcciones modificar = new frmAcciones(seleccionado);
+                modificar.ShowDialog();
+                cargar();
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -98,20 +105,27 @@ namespace presentacion
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             Articulo seleccionado;
-            try
+            if (dtgArticulos.CurrentRow == null)
             {
-                DialogResult respuesta = MessageBox.Show("¿Querés eliminar el articulo? No hay marcha atras.", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (respuesta == DialogResult.Yes)
-                {
-                    seleccionado = (Articulo)dtgArticulos.CurrentRow.DataBoundItem;
-                    negocio.eliminar(seleccionado.Id);
-
-                    cargar();
-                }
+                MessageBox.Show("Seleccione un articulo en el listado.");
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
+                try
+                {
+                    DialogResult respuesta = MessageBox.Show("¿Querés eliminar el articulo? No hay marcha atras.", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        seleccionado = (Articulo)dtgArticulos.CurrentRow.DataBoundItem;
+                        negocio.eliminar(seleccionado.Id);
+
+                        cargar();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
         }        
 
@@ -229,6 +243,29 @@ namespace presentacion
         private void btnRecarga_Click(object sender, EventArgs e)
         {
             cargar();
+        }
+        private void dtgArticulos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Verificar si la columna actual es la columna que deseas formatear
+            if (dtgArticulos.Columns[e.ColumnIndex].Name == "Precio")
+            {
+                if (e.Value != null)
+                {
+                    // Convertir el valor de la celda a un decimal
+                    decimal valorDecimal;
+                    if (decimal.TryParse(e.Value.ToString(), out valorDecimal))
+                    {
+                        // Aplicar el formato deseado
+                        e.Value = valorDecimal.ToString("#,0.00", System.Globalization.CultureInfo.InvariantCulture);
+                        e.FormattingApplied = true;
+                    }
+                    else
+                    {
+                        // Si no se puede convertir a decimal, deja el valor sin formato
+                        e.FormattingApplied = false;
+                    }
+                }
+            }
         }
     }
 }

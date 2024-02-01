@@ -75,6 +75,7 @@
             this.dtgArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgArticulos.Size = new System.Drawing.Size(598, 232);
             this.dtgArticulos.TabIndex = 5;
+            this.dtgArticulos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgArticulos_CellFormatting);
             this.dtgArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // btnEliminar
