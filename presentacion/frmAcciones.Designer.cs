@@ -55,7 +55,7 @@
             this.btnAgregarImagen.Location = new System.Drawing.Point(230, 96);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
             this.btnAgregarImagen.Size = new System.Drawing.Size(27, 23);
-            this.btnAgregarImagen.TabIndex = 31;
+            this.btnAgregarImagen.TabIndex = 4;
             this.btnAgregarImagen.Text = "+";
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
             this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
@@ -74,7 +74,7 @@
             this.txtUrlImagen.Location = new System.Drawing.Point(91, 96);
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(121, 20);
-            this.txtUrlImagen.TabIndex = 22;
+            this.txtUrlImagen.TabIndex = 3;
             this.txtUrlImagen.Leave += new System.EventHandler(this.txtUrlImagen_Leave);
             // 
             // lblUrlImagen
@@ -93,7 +93,7 @@
             this.cboCategoria.Location = new System.Drawing.Point(91, 196);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(121, 21);
-            this.cboCategoria.TabIndex = 24;
+            this.cboCategoria.TabIndex = 7;
             // 
             // cboMarca
             // 
@@ -102,7 +102,7 @@
             this.cboMarca.Location = new System.Drawing.Point(91, 169);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(121, 21);
-            this.cboMarca.TabIndex = 23;
+            this.cboMarca.TabIndex = 6;
             // 
             // lblCategoria
             // 
@@ -127,7 +127,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(24, 237);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(109, 23);
-            this.btnCancelar.TabIndex = 26;
+            this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -137,7 +137,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(152, 237);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(105, 23);
-            this.btnAceptar.TabIndex = 25;
+            this.btnAceptar.TabIndex = 8;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -147,21 +147,21 @@
             this.txtDescripcion.Location = new System.Drawing.Point(91, 70);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(121, 20);
-            this.txtDescripcion.TabIndex = 20;
+            this.txtDescripcion.TabIndex = 2;
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(91, 44);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(121, 20);
-            this.txtNombre.TabIndex = 18;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(91, 18);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(121, 20);
-            this.txtCodigo.TabIndex = 16;
+            this.txtCodigo.TabIndex = 0;
             // 
             // lblDescripcion
             // 
@@ -204,7 +204,7 @@
             this.txtPrecio.Location = new System.Drawing.Point(91, 123);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(121, 20);
-            this.txtPrecio.TabIndex = 33;
+            this.txtPrecio.TabIndex = 5;
             // 
             // lblDecimales
             // 
